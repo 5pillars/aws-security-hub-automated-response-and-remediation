@@ -7,19 +7,20 @@ description: |
   ## Input Parameters
   * Finding: (Required) Security Hub finding details JSON
   * AutomationAssumeRole: (Required) The ARN of the role that allows Automation to perform the actions on your behalf.
-  
+
   ## Output Parameters
   * Remediation.Output - Output of AWS-DisablePublicAccessForSecurityGroup runbook.
 
   ## Documentation Links
   * [CIS v1.2.0 4.1](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html#securityhub-cis-controls-4.1)
   * [CIS v1.2.0 4.2](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html#securityhub-cis-controls-4.2)
-  
-schemaVersion: '0.3'
-assumeRole: '{{ AutomationAssumeRole }}'
+
+schemaVersion: "0.3"
+assumeRole: "{{ AutomationAssumeRole }}"
 outputs:
   - ParseInput.AffectedObject
-  - Remediation.Output 
+  - Remediation.Output
+ControlCondition: !Equals [!Ref ParseInput.ControlId, "4.1"]
 parameters:
   Finding:
     type: StringMap
@@ -27,18 +28,20 @@ parameters:
   AutomationAssumeRole:
     type: String
     description: (Optional) The ARN of the role that allows Automation to perform the actions on your behalf.
-    default: ''
+    default: ""
     allowedPattern: '^arn:(?:aws|aws-us-gov|aws-cn):iam::\d{12}:role/[\w+=,.@-]+'
-
 mainSteps:
   - name: ParseInput
-    action: 'aws:executeScript'
+    action: "aws:executeScript"
     outputs:
       - Name: GroupId
         Selector: $.Payload.resource_id
         Type: String
       - Name: FindingId
         Selector: $.Payload.finding_id
+        Type: String
+      - Name: ControlId
+        Selector: $.Payload.control_id
         Type: String
       - Name: ProductArn
         Selector: $.Payload.product_arn
@@ -48,34 +51,34 @@ mainSteps:
         Type: StringMap
     inputs:
       InputPayload:
-        Finding: '{{Finding}}'
-        parse_id_pattern: '^arn:(?:aws|aws-cn|aws-us-gov):ec2:(?:[a-z]{2}(?:-gov)?-[a-z]+-[0-9]):[0-9]{12}:security-group/(sg-[a-f0-9]{8,17})$'
-        expected_control_id: ['4.1', '4.2']
+        Finding: "{{Finding}}"
+        parse_id_pattern: "^arn:(?:aws|aws-cn|aws-us-gov):ec2:(?:[a-z]{2}(?:-gov)?-[a-z]+-[0-9]):[0-9]{12}:security-group/(sg-[a-f0-9]{8,17})$"
+        expected_control_id: ["4.1", "4.2"]
       Runtime: python3.7
       Handler: parse_event
       Script: |-
         %%SCRIPT=cis_parse_input.py%%
     isEnd: false
   - name: Remediation
-    action: 'aws:executeAutomation'
+    action: "aws:executeAutomation"
     isEnd: false
     inputs:
-      DocumentName: AWS-DisablePublicAccessForSecurityGroup
+      DocumentName: SHARR-DisablePublicAccessForSecurityGroup
       RuntimeParameters:
-        GroupId: '{{ ParseInput.GroupId }}'
-        AutomationAssumeRole: 'arn:{{global:AWS_PARTITION}}:iam::{{global:ACCOUNT_ID}}:role/SO0111-DisablePublicAccessForSecurityGroup'
-
+        GroupId: "{{ ParseInput.GroupId }}"
+        Port: !If [ControlCondition, "22", "3389"]
+        AutomationAssumeRole: "arn:{{global:AWS_PARTITION}}:iam::{{global:ACCOUNT_ID}}:role/SO0111-DisablePublicAccessForSecurityGroup"
   - name: UpdateFinding
-    action: 'aws:executeAwsApi'
+    action: "aws:executeAwsApi"
     inputs:
       Service: securityhub
       Api: BatchUpdateFindings
       FindingIdentifiers:
-      - Id: '{{ParseInput.FindingId}}'
-        ProductArn: '{{ParseInput.ProductArn}}'
+        - Id: "{{ParseInput.FindingId}}"
+          ProductArn: "{{ParseInput.ProductArn}}"
       Note:
-        Text: 'Disabled public access to the security group {{ ParseInput.GroupId }}.'
-        UpdatedBy: 'SHARR-CIS_1.2.0_4.1'
+        Text: "Disabled public access to the security group {{ ParseInput.GroupId }}."
+        UpdatedBy: "SHARR-CIS_1.2.0_4.1"
       Workflow:
         Status: RESOLVED
     description: Update finding

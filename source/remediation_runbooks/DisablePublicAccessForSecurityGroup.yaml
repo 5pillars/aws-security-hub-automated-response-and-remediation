@@ -1,0 +1,95 @@
+description: Disable Port opened to IP address specified, or to all addresses if no address is specified. Similar to the [RevokeSecurityGroupIngress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RevokeSecurityGroupIngress.html) API, the security group must have existing rules specifically on the Port and RDP ports in order for ingress to be disabled.
+schemaVersion: "0.3"
+assumeRole: "{{ AutomationAssumeRole }}"
+parameters:
+  GroupId:
+    type: String
+    description: (Required) Security Group ID
+    allowedPattern: ^([s][g]\-)([0-9a-f]){1,}$
+  IpAddressToBlock:
+    type: String
+    description: (Optional) Additional Ipv4 or Ipv6 address to block access from (ex:1.2.3.4/32)
+    allowedPattern: (^$)|^((25[0-5]|(2[0-4]\d|[0-1]?\d?\d)(\.(25[0-5]|2[0-4]\d|[0-1]?\d?\d)){3})|(^((?:[0-9A-Fa-f]{1,4}(?::[0-9A-Fa-f]{1,4})*)?)::((?:[0-9A-Fa-f]{1,4}(?::[0-9A-Fa-f]{1,4})*)?))|(^(?:[0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}))\/(25[0-5]|2[0-4]\d|[0-1]?\d?\d)$
+    default: ""
+  Port:
+    type: String
+    description: (Required) Remove this port from securitygroup
+  AutomationAssumeRole:
+    type: String
+    description: (Optional) The ARN of the role that allows Automation to perform the actions on your behalf.
+    default: ""
+mainSteps:
+  - name: CustomIpCheck
+    action: aws:branch
+    inputs:
+      Choices:
+        - NextStep: DisablePortFromCustomIpV6
+          And:
+            - Not:
+                Variable: "{{IpAddressToBlock}}"
+                StringEquals: ""
+            - Variable: "{{ IpAddressToBlock }}"
+              Contains: ":"
+        - NextStep: DisablePortFromCustomIpV4
+          And:
+            - Not:
+                Variable: "{{IpAddressToBlock}}"
+                StringEquals: ""
+            - Not:
+                Variable: "{{ IpAddressToBlock }}"
+                Contains: ":"
+      Default: DisablePortFromIpV4
+  - name: DisablePortFromIpV4
+    action: aws:executeAwsApi
+    inputs:
+      Service: ec2
+      Api: RevokeSecurityGroupIngress
+      GroupId: "{{GroupId}}"
+      IpPermissions:
+        - IpProtocol: tcp
+          FromPort: "{{Port}}"
+          ToPort: "{{Port}}"
+          IpRanges:
+            - CidrIp: 0.0.0.0/0
+    onFailure: Continue
+  - name: DisablePortFromIpV6
+    action: "aws:executeAwsApi"
+    inputs:
+      Service: ec2
+      Api: RevokeSecurityGroupIngress
+      GroupId: "{{GroupId}}"
+      IpPermissions:
+        - IpProtocol: tcp
+          FromPort: "{{Port}}"
+          ToPort: "{{Port}}"
+          Ipv6Ranges:
+            - CidrIpv6: "::/0"
+    isEnd: true
+    onFailure: Continue
+  - name: DisablePortFromCustomIpV4
+    action: "aws:executeAwsApi"
+    inputs:
+      Service: ec2
+      Api: RevokeSecurityGroupIngress
+      GroupId: "{{GroupId}}"
+      IpPermissions:
+        - IpProtocol: tcp
+          FromPort: "{{Port}}"
+          ToPort: "{{Port}}"
+          IpRanges:
+            - CidrIp: "{{ IpAddressToBlock }}"
+    onFailure: Continue
+  - name: DisablePortFromCustomIpV6
+    action: "aws:executeAwsApi"
+    inputs:
+      Service: ec2
+      Api: RevokeSecurityGroupIngress
+      GroupId: "{{GroupId}}"
+      IpPermissions:
+        - IpProtocol: tcp
+          FromPort: "{{Port}}"
+          ToPort: "{{Port}}"
+          Ipv6Ranges:
+            - CidrIpv6: "{{ IpAddressToBlock }}"
+    isEnd: true
+    onFailure: Continue
