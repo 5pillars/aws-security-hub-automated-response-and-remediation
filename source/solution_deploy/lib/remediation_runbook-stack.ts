@@ -1092,7 +1092,7 @@ export class RemediationRunbookStack extends cdk.Stack {
         }
     }
     //-----------------------------------------
-    // AWS-DisablePublicAccessForSecurityGroup
+    // SHARR-DisablePublicAccessForSecurityGroup
     //
     {
         const remediationName = 'DisablePublicAccessForSecurityGroup'
