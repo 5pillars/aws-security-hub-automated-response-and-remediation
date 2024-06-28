@@ -19,7 +19,6 @@ chmod +x ./build-s3-dist.sh
 chmod +x ./upload-s3-dist.sh
 
 # Execute build script with parameters
-./build-s3-dist.sh -b "$playbookName" -c "$versionNumber"
 ./build-s3-dist.sh -b "$playbookName" -v "$versionNumber"
 
 # Synchronize built assets to the specified S3 bucket and version
