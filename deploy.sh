@@ -26,6 +26,6 @@ chmod +x ./upload-s3-dist.sh
 
 # Execute upload script for multiple regions
 regions=(ap-southeast-2 ap-northeast-1 us-east-1 us-east-2 us-west-1 us-west-2 ap-southeast-1 ap-south-1 eu-west-1 eu-west-2)
-#for region in "${regions[@]}"; do
-#    ./upload-s3-dist.sh "$region"
-#done
+for region in "${regions[@]}"; do
+    ./upload-s3-dist.sh "$region"
+done
