@@ -4,7 +4,6 @@
 maxrc=0
 rc=0
 export overrideWarningsEnabled=false
-echo "Test"
 [[ $1 == 'update' ]] && {
     update="true"
     echo "UPDATE MODE: CDK Snapshots will be updated. CDK UNIT TESTS WILL BE SKIPPED"
