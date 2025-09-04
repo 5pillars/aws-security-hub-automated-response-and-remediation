@@ -10,7 +10,7 @@ import * as kms from 'aws-cdk-lib/aws-kms';
 import * as fs from 'fs';
 import * as ec2 from 'aws-cdk-lib/aws-ec2';
 import * as iam from 'aws-cdk-lib/aws-iam';
-import * as logs from "aws-cdk-lib/aws-logs";
+import * as logs from 'aws-cdk-lib/aws-logs';
 import {
   Role,
   CfnRole,
@@ -122,58 +122,56 @@ export class SolutionDeployStack extends cdk.Stack {
       stringValue: snsTopic.topicArn,
     });
 
-    const vpc = new ec2.Vpc(this, 'orchestratorLambdaVPC', {
-      natGateways: 2,
-      maxAzs: 2,
-      ipAddresses: ec2.IpAddresses.cidr('10.1.0.0/16'),
-      vpcName: 'ASROrchestratorLambdaVPC',
-      subnetConfiguration: [
-        {
-          name: 'public',
-          subnetType: ec2.SubnetType.PUBLIC,
-          cidrMask: 24
-        },
-        {
-          name: 'private',
-          subnetType: ec2.SubnetType.PRIVATE_WITH_EGRESS,
-          cidrMask: 24
-        }
-      ],
-    });
+    // const vpc = new ec2.Vpc(this, 'orchestratorLambdaVPC', {
+    //   natGateways: 2,
+    //   maxAzs: 2,
+    //   ipAddresses: ec2.IpAddresses.cidr('10.1.0.0/16'),
+    //   vpcName: 'ASROrchestratorLambdaVPC',
+    //   subnetConfiguration: [
+    //     {
+    //       name: 'public',
+    //       subnetType: ec2.SubnetType.PUBLIC,
+    //       cidrMask: 24
+    //     },
+    //     {
+    //       name: 'private',
+    //       subnetType: ec2.SubnetType.PRIVATE_WITH_EGRESS,
+    //       cidrMask: 24
+    //     }
+    //   ],
+    // });
 
-    const securityGroup = new ec2.SecurityGroup(this, 'orchestratorLambdaSG', 
-      {
-        vpc: vpc,
-        allowAllOutbound: true,
-        description: "Security group for orchestrator lambdas to allow outbound traffic." 
-      }
-    )
+    // const securityGroup = new ec2.SecurityGroup(this, 'orchestratorLambdaSG', {
+    //   vpc: vpc,
+    //   allowAllOutbound: true,
+    //   description: 'Security group for orchestrator lambdas to allow outbound traffic.',
+    // });
 
-    const logGroup = new logs.LogGroup(this, 'orchestratorLambdaVPCLogGroup', {
-      retention: logs.RetentionDays.ONE_YEAR,
-    });
+    // const logGroup = new logs.LogGroup(this, 'orchestratorLambdaVPCLogGroup', {
+    //   retention: logs.RetentionDays.ONE_YEAR,
+    // });
 
     // Create an IAM Role for VPC Flow Logs
-    const flowLogsRole = new iam.Role(this, 'orchestratorLambdaVPCFlowLogsRole', {
-      assumedBy: new iam.ServicePrincipal('vpc-flow-logs.amazonaws.com'),
-    });
+    // const flowLogsRole = new iam.Role(this, 'orchestratorLambdaVPCFlowLogsRole', {
+    //   assumedBy: new iam.ServicePrincipal('vpc-flow-logs.amazonaws.com'),
+    // });
 
     // Attach permissions for publishing logs to CloudWatch
-    flowLogsRole.addToPolicy(
-      new iam.PolicyStatement({
-        actions: ['logs:CreateLogStream', 'logs:PutLogEvents'],
-        resources: [`${logGroup.logGroupArn}`],
-      })
-    );
+    // flowLogsRole.addToPolicy(
+    //   new iam.PolicyStatement({
+    //     actions: ['logs:CreateLogStream', 'logs:PutLogEvents'],
+    //     resources: [`${logGroup.logGroupArn}`],
+    //   })
+    // );
 
-    new ec2.CfnFlowLog(this, 'orchestratorLambdaVPCFlowLog', {
-      resourceId: vpc.vpcId,
-      resourceType: 'VPC',
-      trafficType: 'ALL',
-      logDestinationType: 'cloud-watch-logs',
-      logGroupName: logGroup.logGroupName,
-      deliverLogsPermissionArn: flowLogsRole.roleArn,
-    });
+    // new ec2.CfnFlowLog(this, 'orchestratorLambdaVPCFlowLog', {
+    //   resourceId: vpc.vpcId,
+    //   resourceType: 'VPC',
+    //   trafficType: 'ALL',
+    //   logDestinationType: 'cloud-watch-logs',
+    //   logGroupName: logGroup.logGroupName,
+    //   deliverLogsPermissionArn: flowLogsRole.roleArn,
+    // });
 
     const mapping = new cdk.CfnMapping(this, 'mappings');
     mapping.setValue('sendAnonymousMetrics', 'data', this.SEND_ANONYMOUS_DATA);
@@ -231,20 +229,6 @@ export class SolutionDeployStack extends cdk.Stack {
         new PolicyStatement({
           actions: ['organizations:ListTagsForResource'],
           resources: ['*'],
-        }),
-        new PolicyStatement({
-          actions: [
-            "logs:CreateLogGroup",
-            "logs:CreateLogStream",
-            "logs:PutLogEvents",
-            "ec2:CreateNetworkInterface",
-            "ec2:DescribeNetworkInterfaces",
-            "ec2:DescribeSubnets",
-            "ec2:DeleteNetworkInterface",
-            "ec2:AssignPrivateIpAddresses",
-            "ec2:UnassignPrivateIpAddresses"
-          ],
-          resources: [vpc.vpcArn],
         }),
       ],
     });
@@ -320,8 +304,8 @@ export class SolutionDeployStack extends cdk.Stack {
       memorySize: 256,
       timeout: cdk.Duration.seconds(600),
       role: orchestratorRole,
-      vpc: vpc,
-      securityGroups: [securityGroup],
+      // vpc: vpc,
+      // securityGroups: [securityGroup],
       layers: [sharrLambdaLayer],
     });
 
@@ -367,8 +351,8 @@ export class SolutionDeployStack extends cdk.Stack {
       memorySize: 256,
       timeout: cdk.Duration.seconds(600),
       role: orchestratorRole,
-      vpc: vpc,
-      securityGroups: [securityGroup],
+      // vpc: vpc,
+      // securityGroups: [securityGroup],
       layers: [sharrLambdaLayer],
     });
 
@@ -413,8 +397,8 @@ export class SolutionDeployStack extends cdk.Stack {
       memorySize: 256,
       timeout: cdk.Duration.seconds(600),
       role: orchestratorRole,
-      vpc: vpc,
-      securityGroups: [securityGroup],
+      // vpc: vpc,
+      // securityGroups: [securityGroup],
       layers: [sharrLambdaLayer],
     });
 
@@ -459,8 +443,8 @@ export class SolutionDeployStack extends cdk.Stack {
       memorySize: 256,
       timeout: cdk.Duration.seconds(600),
       role: orchestratorRole,
-      vpc: vpc,
-      securityGroups: [securityGroup],
+      // vpc: vpc,
+      // securityGroups: [securityGroup],
       layers: [sharrLambdaLayer],
     });
 
@@ -512,15 +496,15 @@ export class SolutionDeployStack extends cdk.Stack {
         }),
         new PolicyStatement({
           actions: [
-            "ec2:CreateNetworkInterface",
-            "ec2:DescribeNetworkInterfaces",
-            "ec2:DescribeSubnets",
-            "ec2:DeleteNetworkInterface",
-            "ec2:AssignPrivateIpAddresses",
-            "ec2:UnassignPrivateIpAddresses"
+            'ec2:CreateNetworkInterface',
+            'ec2:DescribeNetworkInterfaces',
+            'ec2:DescribeSubnets',
+            'ec2:DeleteNetworkInterface',
+            'ec2:AssignPrivateIpAddresses',
+            'ec2:UnassignPrivateIpAddresses',
           ],
           resources: ['*'],
-        })
+        }),
       ],
     });
 
@@ -602,8 +586,8 @@ export class SolutionDeployStack extends cdk.Stack {
       memorySize: 256,
       timeout: cdk.Duration.seconds(600),
       role: notifyRole,
-      vpc: vpc,
-      securityGroups: [securityGroup],
+      // vpc: vpc,
+      // securityGroups: [securityGroup],
       layers: [sharrLambdaLayer],
     });
 
@@ -637,21 +621,17 @@ export class SolutionDeployStack extends cdk.Stack {
           resources: ['*'],
         }),
         new PolicyStatement({
-          actions: [
-            'logs:CreateLogGroup', 
-            'logs:CreateLogStream', 
-            'logs:PutLogEvents'
-          ],
+          actions: ['logs:CreateLogGroup', 'logs:CreateLogStream', 'logs:PutLogEvents'],
           resources: ['*'],
         }),
         new PolicyStatement({
           actions: [
-            "ec2:CreateNetworkInterface",
-            "ec2:DescribeNetworkInterfaces",
-            "ec2:DescribeSubnets",
-            "ec2:DeleteNetworkInterface",
-            "ec2:AssignPrivateIpAddresses",
-            "ec2:UnassignPrivateIpAddresses"
+            'ec2:CreateNetworkInterface',
+            'ec2:DescribeNetworkInterfaces',
+            'ec2:DescribeSubnets',
+            'ec2:DeleteNetworkInterface',
+            'ec2:AssignPrivateIpAddresses',
+            'ec2:UnassignPrivateIpAddresses',
           ],
           resources: ['*'],
         }),
@@ -730,8 +710,8 @@ export class SolutionDeployStack extends cdk.Stack {
       memorySize: 256,
       timeout: cdk.Duration.seconds(600),
       role: createCustomActionRole,
-      vpc: vpc,
-      securityGroups: [securityGroup],
+      // vpc: vpc,
+      // securityGroups: [securityGroup],
       layers: [sharrLambdaLayer],
     });
 
@@ -786,7 +766,16 @@ export class SolutionDeployStack extends cdk.Stack {
     // Loop through all of the Playbooks and create an option to load each
     //
     const PB_DIR = `${__dirname}/../playbooks`;
-    const ignore = ['.DS_Store', 'common', 'python_lib', 'python_tests', '.pytest_cache', 'NEWPLAYBOOK', '.coverage', 'playbook-index.ts'];
+    const ignore = [
+      '.DS_Store',
+      'common',
+      'python_lib',
+      'python_tests',
+      '.pytest_cache',
+      'NEWPLAYBOOK',
+      '.coverage',
+      'playbook-index.ts',
+    ];
     const illegalChars = /[\\._]/g;
 
     const standardLogicalNames: string[] = [];

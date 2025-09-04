@@ -24,7 +24,7 @@ export class SetS3LifecyclePolicyDocument extends ControlRunbookDocument {
       remediationName: 'SetS3LifecyclePolicy',
       scope: RemediationScope.GLOBAL,
       resourceIdName: 'BucketName',
-      resourceIdRegex: String.raw`^arn:(?:aws|aws-cn|aws-us-gov):s3:::([a-z0-9.-]{3,63})$`,
+      resourceIdRegex: String.raw`^arn:(?:aws|aws-cn|aws-us-gov):s3:::([A-Za-z0-9.-]{3,63})$`,
       updateDescription: HardCodedString.of('Setting an example lifecycle policy on the S3 bucket.'),
     });
   }

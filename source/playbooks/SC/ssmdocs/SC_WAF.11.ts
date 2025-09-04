@@ -17,7 +17,9 @@ export class EnableWAFV2LoggingDocument extends ControlRunbookDocument {
       remediationName: 'EnableWAFV2LoggingDocument',
       scope: RemediationScope.REGIONAL,
       resourceIdName: 'LogDestinationConfigs',
-      resourceIdRegex: String.raw`^arn:aws[a-z0-9-]*:logs:[a-z0-9-]+:\d{12}:log-group:[A-Za-z0-9\.\-\_\#\/]{1,1024}\:\*$`,
+      resourceIdRegex: String.raw`^arn:aws[a-z0-9-]*:wafv2:[a-z0-9-]+:\d{12}:[A-Za-z0-9\.\-\_\#\/]{1,1024}\:\*$`,
+      //arn:aws:wafv2:ap-southeast-2:283152343225:regional/webacl/REGIONALWAFACL-3OpdxsWa9NQp/897811f2-99d8-4156-b7c1-eef8862de2e4
+      //arn:aws:logs:ap-southeast-2:283152343225:log-group:/aws/apigateway/AutomateLightExternalApi:*
       updateDescription: HardCodedString.of('This document enables logging for an AWS WAF (AWS WAFV2) web access control list (web ACL) with the specified Amazon Data Firehose (Firehose) delivery stream.'),
     });
   }

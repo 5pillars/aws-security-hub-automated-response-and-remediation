@@ -17,7 +17,7 @@ class ConfigureS3BucketVersioningDocument extends ControlRunbookDocument {
       remediationName: 'ConfigureS3BucketVersioning',
       scope: RemediationScope.REGIONAL,
       resourceIdName: 'BucketName',
-      resourceIdRegex: String.raw`^(?!.*\.\.)(?!.*\.$)[a-z0-9][a-z0-9\-\.]{1,61}[a-z0-9]$`,
+      resourceIdRegex: String.raw`^arn:(?:aws|aws-cn|aws-us-gov):s3:::([A-Za-z0-9.-]{3,63})$`,
       updateDescription: HardCodedString.of('This document configures versioning for an Amazon Simple Storage Service (Amazon S3) bucket.'),
     });
   }
