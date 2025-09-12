@@ -24,6 +24,7 @@ import {
 import { OrchestratorConstruct } from './common-orchestrator-construct';
 import { CfnStateMachine, StateMachine } from 'aws-cdk-lib/aws-stepfunctions';
 import { OneTrigger } from './ssmplaybook';
+import { Aws } from 'aws-cdk-lib';
 export interface SHARRStackProps extends cdk.StackProps {
   solutionId: string;
   solutionVersion: string;
@@ -803,7 +804,9 @@ export class SolutionDeployStack extends cdk.Stack {
           'TemplateURL',
           'https://' +
             cdk.Fn.findInMap('SourceCode', 'General', 'S3Bucket') +
-            '-reference.s3.amazonaws.com/' +
+            '-' +
+            Aws.REGION +
+            '.s3.amazonaws.com/' +
             cdk.Fn.findInMap('SourceCode', 'General', 'KeyPrefix') +
             '/playbooks/' +
             template_file
