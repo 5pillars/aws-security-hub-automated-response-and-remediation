@@ -25,7 +25,7 @@ export interface ConstructProps {
 }
 
 export class OrchestratorConstruct extends Construct {
-  //nestedStack: NestedStack;
+  nestedStack: NestedStack;
   constructor(scope: Construct, id: string, props: ConstructProps) {
     super(scope, id);
 
@@ -40,8 +40,8 @@ export class OrchestratorConstruct extends Construct {
       },
     });
 
-    // const nestedLogStack = this.createLogStack(props.kmsKeyParm);
-    //this.nestedStack = nestedLogStack;
+    const nestedLogStack = this.createLogStack(props.kmsKeyParm);
+    this.nestedStack = nestedLogStack;
 
     const getDocStateFunc: lambda.IFunction = lambda.Function.fromFunctionAttributes(this, 'getDocStateFunc', {
       functionArn: props.ssmDocStateLambda,
