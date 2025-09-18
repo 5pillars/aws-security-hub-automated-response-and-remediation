@@ -1156,7 +1156,7 @@ Default: 30 seconds
                   ],
                   "parse_id_pattern": "^arn:(?:aws|aws-cn|aws-us-gov):autoscaling:(?:[a-z]{2}(?:-gov)?-[a-z]+-\\d):\\d{12}:autoScalingGroup:(?:[0-9a-fA-F]{8}-(?:[0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}):autoScalingGroupName/(.{1,255})$",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -1515,7 +1515,7 @@ This document configures an SNS topic for notifications from a CloudFormation st
                   ],
                   "parse_id_pattern": "^(arn:(?:aws|aws-us-gov|aws-cn):cloudformation:(?:[a-z]{2}(?:-gov)?-[a-z]+-\\d):\\d{12}:stack/[a-zA-Z][a-zA-Z0-9-]{0,127}/[a-fA-F0-9]{8}-(?:[a-fA-F0-9]{4}-){3}[a-fA-F0-9]{12})$",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -1872,7 +1872,7 @@ Note: this remediation will create a NEW trail.
                   ],
                   "parse_id_pattern": "",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -2202,7 +2202,7 @@ This document enables SSE KMS encryption for log files using the ASR remediation
                   ],
                   "parse_id_pattern": "",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -2552,7 +2552,7 @@ This document enables CloudTrail log file validation.
                   ],
                   "parse_id_pattern": "^arn:(?:aws|aws-cn|aws-us-gov):cloudtrail:(?:[a-z]{2}(?:-gov)?-[a-z]+-\\d):\\d{12}:trail\\/([A-Za-z0-9._-]{3,128})$",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -2911,7 +2911,7 @@ This document configures CloudTrail to log to CloudWatch Logs.
                   ],
                   "parse_id_pattern": "^arn:(?:aws|aws-cn|aws-us-gov):cloudtrail:(?:[a-z]{2}(?:-gov)?-[a-z]+-\\d):\\d{12}:trail\\/([A-Za-z0-9._-]{3,128})$",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -3272,7 +3272,7 @@ This document blocks public access to the CloudTrail S3 bucket.
                   ],
                   "parse_id_pattern": "^arn:(?:aws|aws-cn|aws-us-gov):s3:::([A-Za-z0-9.-]{3,63})$",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -3614,7 +3614,7 @@ Configures access logging for a CloudTrail S3 bucket.
                   ],
                   "parse_id_pattern": "^arn:(?:aws|aws-cn|aws-us-gov):s3:::([A-Za-z0-9.-]{3,63})$",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -4020,7 +4020,7 @@ Remediates the following CIS findings:
                   ],
                   "parse_id_pattern": "",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -4263,7 +4263,7 @@ def parse_event(event, _):
                   "StandardLongName": "pci-dss",
                   "StandardVersion": "3.2.1",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 
@@ -4640,7 +4640,7 @@ This document removes CodeBuild project environment variables containing clear t
                   ],
                   "parse_id_pattern": "^arn:(?:aws|aws-cn|aws-us-gov):codebuild:(?:[a-z]{2}(?:-gov)?-[a-z]+-\\d):\\d{12}:project\\/([A-Za-z0-9][A-Za-z0-9\\-_]{1,254})$",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -5000,7 +5000,7 @@ Enables AWS Config:
                   ],
                   "parse_id_pattern": "",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -5343,7 +5343,7 @@ Removes public access to remove server administrative ports from an EC2 Security
                   ],
                   "parse_id_pattern": "^arn:(?:aws|aws-cn|aws-us-gov):ec2:(?:[a-z]{2}(?:-gov)?-[a-z]+-\\d):\\d{12}:security-group\\/(sg-[a-f\\d]{8,17})$",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -5688,7 +5688,7 @@ This document changes all public EC2 snapshots to private
                   "parse_id_pattern": "",
                   "resource_index": 2,
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -6031,7 +6031,7 @@ This document disables auto assignment of public IP addresses on a subnet.
                   ],
                   "parse_id_pattern": "",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -6391,7 +6391,7 @@ group using the AWS SSM Runbook AWSConfigRemediation-RemoveVPCDefaultSecurityGro
                   ],
                   "parse_id_pattern": "^arn:(?:aws|aws-cn|aws-us-gov):ec2:(?:[a-z]{2}(?:-gov)?-[a-z]+-\\d):\\d{12}:security-group\\/(sg-[0-9a-f]*)$",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -6750,7 +6750,7 @@ Enables VPC Flow Logs for a VPC
                   ],
                   "parse_id_pattern": "^arn:(?:aws|aws-cn|aws-us-gov):ec2:.*:\\d{12}:vpc\\/(vpc-[0-9a-f]{8,17})$",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -7107,7 +7107,7 @@ This document enables \`EBS Encryption by default\` for an AWS account in the cu
                   ],
                   "parse_id_pattern": "",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -7439,7 +7439,7 @@ Creates a support role to allow AWS Support access.
                   ],
                   "parse_id_pattern": "",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -7773,7 +7773,7 @@ SEE AWSConfigRemediation-RevokeUnusedIAMUserCredentials
                   ],
                   "parse_id_pattern": "",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -8112,7 +8112,7 @@ This document disables active keys that have not been rotated for more than 90 d
                   ],
                   "parse_id_pattern": "^arn:(?:aws|aws-cn|aws-us-gov):iam::\\d{12}:user(?:(?:\\u002F)|(?:\\u002F[\\u0021-\\u007F]{1,510}\\u002F))([\\w+=,.@-]{1,64})$",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -8471,7 +8471,7 @@ This document establishes a default password policy.
                   ],
                   "parse_id_pattern": "",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -8814,7 +8814,7 @@ SEE AWSConfigRemediation-RevokeUnusedIAMUserCredentials
                   ],
                   "parse_id_pattern": "",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -9154,7 +9154,7 @@ Enables rotation for customer-managed KMS keys.
                   ],
                   "parse_id_pattern": "^arn:(?:aws|aws-cn|aws-us-gov):kms:(?:[a-z]{2}(?:-gov)?-[a-z]+-\\d):\\d{12}:key\\/([A-Za-z0-9-]{36})$",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -9512,7 +9512,7 @@ function. The remediation is to remove the SID of the public policy.
                   ],
                   "parse_id_pattern": "^arn:(?:aws|aws-us-gov|aws-cn):lambda:(?:[a-z]{2}(?:-gov)?-[a-z]+-\\d):\\d{12}:function:([a-zA-Z0-9\\-_]{1,64})$",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -9871,7 +9871,7 @@ This document enables \`Auto minor version upgrade\` on a given Amazon RDS insta
                   ],
                   "parse_id_pattern": "",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -10230,7 +10230,7 @@ This document enables \`Copy tags to snapshots\` on a given Amazon RDS cluster b
                   ],
                   "parse_id_pattern": "",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -10587,7 +10587,7 @@ This document changes public RDS snapshot to private
                   "parse_id_pattern": "^arn:(?:aws|aws-cn|aws-us-gov):rds:(?:[a-z]{2}(?:-gov)?-[a-z]+-\\d):\\d{12}:(cluster-snapshot|snapshot):([a-zA-Z](?:[0-9a-zA-Z]+-)*[0-9a-zA-Z]+)$",
                   "resource_index": 2,
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -10952,7 +10952,7 @@ This document disables public access to RDS instances by calling another SSM doc
                   ],
                   "parse_id_pattern": "^arn:(?:aws|aws-cn|aws-us-gov):rds:(?:[a-z]{2}(?:-gov)?-[a-z]+-\\d):\\d{12}:db:((?!.*--.*)(?!.*-$)[a-z][a-z0-9-]{0,62})$",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -11311,7 +11311,7 @@ This document encrypts an unencrypted RDS snapshot by calling another SSM docume
                   "parse_id_pattern": "^arn:(?:aws|aws-cn|aws-us-gov):rds:(?:[a-z]{2}(?:-gov)?-[a-z]+-\\d):\\d{12}:((?:cluster-)?snapshot|dbclustersnapshot):((?:rds:)?((?!.*--.*)(?!.*-$)[a-zA-Z][a-zA-Z0-9-]{0,254}))$",
                   "resource_index": 2,
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -11687,7 +11687,7 @@ This document configures an RDS DB instance for multiple Availability Zones by c
                   ],
                   "parse_id_pattern": "",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -12047,7 +12047,7 @@ This document enables \`Enhanced Monitoring\` on a given Amazon RDS instance by 
                   ],
                   "parse_id_pattern": "",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -12424,7 +12424,7 @@ This document enables \`Deletion Protection\` on a given Amazon RDS cluster by c
                   ],
                   "parse_id_pattern": "",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -12781,7 +12781,7 @@ This document enables \`Deletion Protection\` on a given Amazon RDS cluster by c
                   ],
                   "parse_id_pattern": "",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -13139,7 +13139,7 @@ This document disables public access to a Redshift cluster by calling another SS
                   ],
                   "parse_id_pattern": "^arn:(?:aws|aws-cn|aws-us-gov):redshift:(?:[a-z]{2}(?:-gov)?-[a-z]+-\\d):\\d{12}:cluster:(?!.*--)([a-z][a-z0-9-]{0,62})(?<!-)$",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -13496,7 +13496,7 @@ This document enables automatic snapshots on a Redshift cluster by calling anoth
                   ],
                   "parse_id_pattern": "^arn:(?:aws|aws-cn|aws-us-gov):redshift:(?:[a-z]{2}(?:-gov)?-[a-z]+-\\d):\\d{12}:cluster:(?!.*--)([a-z][a-z0-9-]{0,62})(?<!-)$",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -13752,7 +13752,7 @@ def parse_event(event, _):
                 "InputPayload": {
                   "SerializedJson": "{{ ParseInput.RetentionPeriodSerialized }}",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import json
@@ -13888,7 +13888,7 @@ This document disables public access to a Redshift cluster by calling another SS
                   ],
                   "parse_id_pattern": "^arn:(?:aws|aws-cn|aws-us-gov):redshift:(?:[a-z]{2}(?:-gov)?-[a-z]+-\\d):\\d{12}:cluster:(?!.*--)([a-z][a-z0-9-]{0,62})(?<!-)$",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -14144,7 +14144,7 @@ def parse_event(event, _):
                 "InputPayload": {
                   "SerializedJson": "{{ ParseInput.RetentionPeriodSerialized }}",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import boto3
@@ -14361,7 +14361,7 @@ This document enables automatic version upgrade on a Redshift cluster by calling
                   ],
                   "parse_id_pattern": "^arn:(?:aws|aws-cn|aws-us-gov):redshift:(?:[a-z]{2}(?:-gov)?-[a-z]+-\\d):\\d{12}:cluster:(?!.*--)([a-z][a-z0-9-]{0,62})(?<!-)$",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -14617,7 +14617,7 @@ def parse_event(event, _):
                 "InputPayload": {
                   "SerializedJson": "{{ ParseInput.AllowVersionUpgradeSerialized }}",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import json
@@ -14755,7 +14755,7 @@ This document blocks public access to all buckets by default at the account leve
                   ],
                   "parse_id_pattern": "",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -15101,7 +15101,7 @@ This document blocks all public access to an S3 bucket.
                   ],
                   "parse_id_pattern": "^arn:(?:aws|aws-cn|aws-us-gov):s3:::([A-Za-z0-9.-]{3,63})$",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -15443,7 +15443,7 @@ This document enables AES-256 as the default encryption for an S3 bucket.
                   ],
                   "parse_id_pattern": "^arn:(?:aws|aws-cn|aws-us-gov):s3:::([A-Za-z0-9.-]{3,63})$",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -15794,7 +15794,7 @@ This document adds a bucket policy to restrict internet access to https only.
                   ],
                   "parse_id_pattern": "^arn:(?:aws|aws-cn|aws-us-gov):s3:::([A-Za-z0-9.-]{3,63})$",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -16138,7 +16138,7 @@ This document restricts cross-account access to a bucket in the local account.
                   ],
                   "parse_id_pattern": "^arn:(?:aws|aws-cn|aws-us-gov):s3:::([A-Za-z0-9.-]{3,63})$",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -16389,7 +16389,7 @@ def parse_event(event, _):
                 "InputPayload": {
                   "SerializedList": "{{ ParseInput.DenyListSerialized }}",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import json
@@ -16519,7 +16519,7 @@ def runbook_handler(event, _):
                   ],
                   "parse_id_pattern": "",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -16883,7 +16883,7 @@ def parse_event(event, _):
                   ],
                   "parse_id_pattern": "",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -17248,7 +17248,7 @@ This document enables encryption at rest using AWS KMS for SQS Queues.
                   ],
                   "parse_id_pattern": "^arn:(?:aws|aws-us-gov|aws-cn):sqs:(?:[a-z]{2}(?:-gov)?-[a-z]+-\\d):\\d{12}:([a-zA-Z0-9_-]{1,80}(?:\\.fifo)?)$",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re

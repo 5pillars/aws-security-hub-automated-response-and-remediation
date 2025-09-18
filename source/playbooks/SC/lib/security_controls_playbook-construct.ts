@@ -114,7 +114,7 @@ export class SecurityControlsPlaybookMemberStackOriginal extends Stack {
       standardShortName: props.securityStandard,
       standardLongName: props.securityStandardLongName,
       standardVersion: props.securityStandardVersion,
-      runtimePython: Runtime.PYTHON_3_8, // Newest runtime for SSM automations
+      runtimePython: Runtime.PYTHON_3_11, // Newest runtime for SSM automations
       solutionId: props.solutionId,
       solutionAcronym: 'ASR',
       solutionVersion: props.solutionVersion,
@@ -155,7 +155,7 @@ export class SecurityControlsPlaybookMemberStackNew extends Stack {
       standardShortName: props.securityStandard,
       standardLongName: props.securityStandardLongName,
       standardVersion: props.securityStandardVersion,
-      runtimePython: Runtime.PYTHON_3_8, // Newest runtime for SSM automations
+      runtimePython: Runtime.PYTHON_3_11, // Newest runtime for SSM automations
       solutionId: props.solutionId,
       solutionAcronym: 'ASR',
       solutionVersion: props.solutionVersion,

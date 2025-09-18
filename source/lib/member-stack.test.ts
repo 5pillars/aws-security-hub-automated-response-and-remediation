@@ -31,7 +31,7 @@ function getMemberStack(): Stack {
     solutionTMN,
     solutionVersion,
     solutionDistBucket,
-    runtimePython: Runtime.PYTHON_3_9,
+    runtimePython: Runtime.PYTHON_3_11,
   });
   appregistry.applyAppRegistryToStacks(stack, []);
   Aspects.of(app).add(new AwsSolutionsChecks({ verbose: true }));

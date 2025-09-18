@@ -26,7 +26,7 @@ function getTestStack(): Stack {
     solutionDistBucket: 'solutions',
     solutionTMN: 'aws-security-hub-automated-response-and-remediation',
     solutionName: 'AWS Security Hub Automated Response & Remediation',
-    runtimePython: Runtime.PYTHON_3_9,
+    runtimePython: Runtime.PYTHON_3_11,
     orchLogGroup: 'ORCH_LOG_GROUP',
   });
   appregistry.applyAppRegistryToStacks(stack, stack.nestedStacks);
