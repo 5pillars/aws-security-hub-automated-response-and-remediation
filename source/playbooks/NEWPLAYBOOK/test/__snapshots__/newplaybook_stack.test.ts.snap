@@ -407,7 +407,7 @@ This document enables \`Enhanced Monitoring\` on a given Amazon RDS instance by 
                 "InputPayload": {
                   "Finding": "{{Finding}}",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 import re
@@ -681,7 +681,7 @@ def parse_event(event, _):
                 "InputPayload": {
                   "remediation_output": "{{ExecRemediation.Output}}",
                 },
-                "Runtime": "python3.8",
+                "Runtime": "python3.11",
                 "Script": "import json
 
 def verify_remediation(event, context):

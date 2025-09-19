@@ -43,7 +43,7 @@ mainSteps:
         region: '{{global:REGION}}'
         bucket: '{{BucketName}}'
         targetbucket: '{{TargetBucketName}}'
-      Runtime: python3.8
+      Runtime: python3.11
       Handler: enable_server_access_logging
       Script: |-
         %%SCRIPT=EnableServerAccessLoggingS3.py%%

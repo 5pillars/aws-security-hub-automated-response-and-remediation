@@ -54,7 +54,7 @@ mainSteps:
     timeoutSeconds: 600
     isEnd: true
     inputs:
-      Runtime: python3.8
+      Runtime: python3.11
       Handler: handler
       InputPayload:
         DistributionId: "{{ CloudFrontId }}"
