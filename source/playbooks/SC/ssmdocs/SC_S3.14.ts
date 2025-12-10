@@ -15,16 +15,14 @@ class ConfigureS3BucketVersioningDocument extends ControlRunbookDocument {
       ...props,
       securityControlId: 'S3.14',
       remediationName: 'ConfigureS3BucketVersioning',
-      scope: RemediationScope.REGIONAL,
+      scope: RemediationScope.GLOBAL,
       resourceIdName: 'BucketName',
       resourceIdRegex: String.raw`^(?!.*\.\.)(?!.*\.$)[a-z0-9][a-z0-9\-\.]{1,61}[a-z0-9]$`,
       updateDescription: HardCodedString.of('This document configures versioning for an Amazon Simple Storage Service (Amazon S3) bucket.'),
     });
   }
-  /** @override */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  protected getRemediationParams(): { [_: string]: any } {
-    const params = super.getRemediationParams();
+  protected override getRemediationParams():  Record<string, any> {
+    const params: Record<string, any> = super.getRemediationParams();
 
     params.BucketName = StringVariable.of('ParseInput.BucketName');
     params.VersioningState = StringVariable.of('ParseInput.VersioningState'); // optional
