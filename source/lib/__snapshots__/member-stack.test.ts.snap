@@ -1007,7 +1007,7 @@ exports[`member stack snapshot matches 1`] = `
             "Arn",
           ],
         },
-        "Runtime": "python3.9",
+        "Runtime": "python3.11",
         "Timeout": 900,
       },
       "Type": "AWS::Lambda::Function",
