@@ -51,7 +51,7 @@ mainSteps:
       ## VerifyDropInvalidHeaders
       Verifies the drop invalid headers setting has been enabled on the load balancer you specify in the `LoadBalancerArn` parameter.
     inputs:
-      Runtime: python3.8
+      Runtime: python3.11
       Handler: verify_drop_invalid_headers
       InputPayload:
         LoadBalancerArn: "{{ LoadBalancerArn }}"

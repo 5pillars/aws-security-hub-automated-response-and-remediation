@@ -261,7 +261,7 @@ mainSteps:
       the DynamoDB table.
     action: aws:executeScript
     inputs:
-      Runtime: python3.8
+      Runtime: python3.11
       Handler: handler
       InputPayload:
         TableName: "{{ TableName }}"
