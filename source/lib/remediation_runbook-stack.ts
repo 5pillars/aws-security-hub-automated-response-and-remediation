@@ -1702,7 +1702,7 @@ export class RemediationRunbookStack extends cdk.Stack {
     // AWSConfigRemediation-EnableCloudFrontAccessLogs
     //
     {
-      const remediationName = 'EnableCloudFrontAccessLogsDocument';
+      const remediationName = 'EnableCloudFrontAccessLogs';
       const inlinePolicy = new Policy(props.roleStack, `ASR-Remediation-Policy-${remediationName}`);
 
       const remediationPermsAPIGateway = new PolicyStatement();
@@ -1725,6 +1725,16 @@ export class RemediationRunbookStack extends cdk.Stack {
         ssmDocName: remediationName,
         remediationPolicy: inlinePolicy,
         remediationRoleName: `${remediationRoleNameBase}${remediationName}`,
+      });
+
+      RunbookFactory.createRemediationRunbook(this, 'ASR ' + remediationName, {
+        ssmDocName: remediationName,
+        ssmDocPath: ssmdocs,
+        ssmDocFileName: `${remediationName}.yaml`,
+        scriptPath: `${ssmdocs}/scripts`,
+        solutionVersion: props.solutionVersion,
+        solutionDistBucket: props.solutionDistBucket,
+        solutionId: props.solutionId,
       });
 
       const childToMod = inlinePolicy.node.findChild('Resource') as CfnPolicy;
@@ -1766,6 +1776,16 @@ export class RemediationRunbookStack extends cdk.Stack {
         remediationRoleName: `${remediationRoleNameBase}${remediationName}`,
       });
 
+      RunbookFactory.createRemediationRunbook(this, 'ASR ' + remediationName, {
+        ssmDocName: remediationName,
+        ssmDocPath: ssmdocs,
+        ssmDocFileName: `${remediationName}.yaml`,
+        scriptPath: `${ssmdocs}/scripts`,
+        solutionVersion: props.solutionVersion,
+        solutionDistBucket: props.solutionDistBucket,
+        solutionId: props.solutionId,
+      });
+
       const childToMod = inlinePolicy.node.findChild('Resource') as CfnPolicy;
       childToMod.cfnOptions.metadata = {
         cfn_nag: {
@@ -1802,6 +1822,16 @@ export class RemediationRunbookStack extends cdk.Stack {
         ssmDocName: remediationName,
         remediationPolicy: inlinePolicy,
         remediationRoleName: `${remediationRoleNameBase}${remediationName}`,
+      });
+
+      RunbookFactory.createRemediationRunbook(this, 'ASR ' + remediationName, {
+        ssmDocName: remediationName,
+        ssmDocPath: ssmdocs,
+        ssmDocFileName: `${remediationName}.yaml`,
+        scriptPath: `${ssmdocs}/scripts`,
+        solutionVersion: props.solutionVersion,
+        solutionDistBucket: props.solutionDistBucket,
+        solutionId: props.solutionId,
       });
 
       const childToMod = inlinePolicy.node.findChild('Resource') as CfnPolicy;
@@ -1841,6 +1871,16 @@ export class RemediationRunbookStack extends cdk.Stack {
         remediationRoleName: `${remediationRoleNameBase}${remediationName}`,
       });
 
+      RunbookFactory.createRemediationRunbook(this, 'ASR ' + remediationName, {
+        ssmDocName: remediationName,
+        ssmDocPath: ssmdocs,
+        ssmDocFileName: `${remediationName}.yaml`,
+        scriptPath: `${ssmdocs}/scripts`,
+        solutionVersion: props.solutionVersion,
+        solutionDistBucket: props.solutionDistBucket,
+        solutionId: props.solutionId,
+      });
+
       const childToMod = inlinePolicy.node.findChild('Resource') as CfnPolicy;
       childToMod.cfnOptions.metadata = {
         cfn_nag: {
@@ -1878,6 +1918,16 @@ export class RemediationRunbookStack extends cdk.Stack {
         remediationRoleName: `${remediationRoleNameBase}${remediationName}`,
       });
 
+      RunbookFactory.createRemediationRunbook(this, 'ASR ' + remediationName, {
+        ssmDocName: remediationName,
+        ssmDocPath: ssmdocs,
+        ssmDocFileName: `${remediationName}.yaml`,
+        scriptPath: `${ssmdocs}/scripts`,
+        solutionVersion: props.solutionVersion,
+        solutionDistBucket: props.solutionDistBucket,
+        solutionId: props.solutionId,
+      });
+
       const childToMod = inlinePolicy.node.findChild('Resource') as CfnPolicy;
       childToMod.cfnOptions.metadata = {
         cfn_nag: {
@@ -1894,7 +1944,7 @@ export class RemediationRunbookStack extends cdk.Stack {
     // AWS-EnableDynamoDbAutoscaling
     //
     {
-      const remediationName = 'EnableDynamoDbAutoscalingDocument';
+      const remediationName = 'EnableDynamoDbAutoscaling';
       const inlinePolicy = new Policy(props.roleStack, `ASR-Remediation-Policy-${remediationName}`);
 
       const remediationPermsDynamoDB = new PolicyStatement();
@@ -1915,6 +1965,16 @@ export class RemediationRunbookStack extends cdk.Stack {
         ssmDocName: remediationName,
         remediationPolicy: inlinePolicy,
         remediationRoleName: `${remediationRoleNameBase}${remediationName}`,
+      });
+
+      RunbookFactory.createRemediationRunbook(this, 'ASR ' + remediationName, {
+        ssmDocName: remediationName,
+        ssmDocPath: ssmdocs,
+        ssmDocFileName: `${remediationName}.yaml`,
+        scriptPath: `${ssmdocs}/scripts`,
+        solutionVersion: props.solutionVersion,
+        solutionDistBucket: props.solutionDistBucket,
+        solutionId: props.solutionId,
       });
 
       const childToMod = inlinePolicy.node.findChild('Resource') as CfnPolicy;
@@ -1954,6 +2014,16 @@ export class RemediationRunbookStack extends cdk.Stack {
         remediationRoleName: `${remediationRoleNameBase}${remediationName}`,
       });
 
+      RunbookFactory.createRemediationRunbook(this, 'ASR ' + remediationName, {
+        ssmDocName: remediationName,
+        ssmDocPath: ssmdocs,
+        ssmDocFileName: `${remediationName}.yaml`,
+        scriptPath: `${ssmdocs}/scripts`,
+        solutionVersion: props.solutionVersion,
+        solutionDistBucket: props.solutionDistBucket,
+        solutionId: props.solutionId,
+      });
+
       const childToMod = inlinePolicy.node.findChild('Resource') as CfnPolicy;
       childToMod.cfnOptions.metadata = {
         cfn_nag: {
@@ -1989,6 +2059,16 @@ export class RemediationRunbookStack extends cdk.Stack {
         ssmDocName: remediationName,
         remediationPolicy: inlinePolicy,
         remediationRoleName: `${remediationRoleNameBase}${remediationName}`,
+      });
+
+      RunbookFactory.createRemediationRunbook(this, 'ASR ' + remediationName, {
+        ssmDocName: remediationName,
+        ssmDocPath: ssmdocs,
+        ssmDocFileName: `${remediationName}.yaml`,
+        scriptPath: `${ssmdocs}/scripts`,
+        solutionVersion: props.solutionVersion,
+        solutionDistBucket: props.solutionDistBucket,
+        solutionId: props.solutionId,
       });
 
       const childToMod = inlinePolicy.node.findChild('Resource') as CfnPolicy;
@@ -2027,6 +2107,16 @@ export class RemediationRunbookStack extends cdk.Stack {
         ssmDocName: remediationName,
         remediationPolicy: inlinePolicy,
         remediationRoleName: `${remediationRoleNameBase}${remediationName}`,
+      });
+
+      RunbookFactory.createRemediationRunbook(this, 'ASR ' + remediationName, {
+        ssmDocName: remediationName,
+        ssmDocPath: ssmdocs,
+        ssmDocFileName: `${remediationName}.yaml`,
+        scriptPath: `${ssmdocs}/scripts`,
+        solutionVersion: props.solutionVersion,
+        solutionDistBucket: props.solutionDistBucket,
+        solutionId: props.solutionId,
       });
 
       const childToMod = inlinePolicy.node.findChild('Resource') as CfnPolicy;
@@ -2068,6 +2158,16 @@ export class RemediationRunbookStack extends cdk.Stack {
         remediationRoleName: `${remediationRoleNameBase}${remediationName}`,
       });
 
+      RunbookFactory.createRemediationRunbook(this, 'ASR ' + remediationName, {
+        ssmDocName: remediationName,
+        ssmDocPath: ssmdocs,
+        ssmDocFileName: `${remediationName}.yaml`,
+        scriptPath: `${ssmdocs}/scripts`,
+        solutionVersion: props.solutionVersion,
+        solutionDistBucket: props.solutionDistBucket,
+        solutionId: props.solutionId,
+      });
+
       const childToMod = inlinePolicy.node.findChild('Resource') as CfnPolicy;
       childToMod.cfnOptions.metadata = {
         cfn_nag: {
@@ -2107,6 +2207,16 @@ export class RemediationRunbookStack extends cdk.Stack {
         remediationRoleName: `${remediationRoleNameBase}${remediationName}`,
       });
 
+      RunbookFactory.createRemediationRunbook(this, 'ASR ' + remediationName, {
+        ssmDocName: remediationName,
+        ssmDocPath: ssmdocs,
+        ssmDocFileName: `${remediationName}.yaml`,
+        scriptPath: `${ssmdocs}/scripts`,
+        solutionVersion: props.solutionVersion,
+        solutionDistBucket: props.solutionDistBucket,
+        solutionId: props.solutionId,
+      });
+
       const childToMod = inlinePolicy.node.findChild('Resource') as CfnPolicy;
       childToMod.cfnOptions.metadata = {
         cfn_nag: {
@@ -2120,10 +2230,10 @@ export class RemediationRunbookStack extends cdk.Stack {
       };
     }
     //-----------------------------------------
-    // AWS-EnableNeptuneDbClusterDeletionProtection
+    // AWS-EnableNeptuneClusterDeletionProtection
     //
     {
-      const remediationName = 'EnableNeptuneDbClusterDeletionProtection';
+      const remediationName = 'EnableNeptuneClusterDeletionProtection';
       const inlinePolicy = new Policy(props.roleStack, `ASR-Remediation-Policy-${remediationName}`);
 
       const remediationPermsNeptune = new PolicyStatement();
@@ -2144,6 +2254,16 @@ export class RemediationRunbookStack extends cdk.Stack {
         ssmDocName: remediationName,
         remediationPolicy: inlinePolicy,
         remediationRoleName: `${remediationRoleNameBase}${remediationName}`,
+      });
+
+      RunbookFactory.createRemediationRunbook(this, 'ASR ' + remediationName, {
+        ssmDocName: remediationName,
+        ssmDocPath: ssmdocs,
+        ssmDocFileName: `${remediationName}.yaml`,
+        scriptPath: `${ssmdocs}/scripts`,
+        solutionVersion: props.solutionVersion,
+        solutionDistBucket: props.solutionDistBucket,
+        solutionId: props.solutionId,
       });
 
       const childToMod = inlinePolicy.node.findChild('Resource') as CfnPolicy;
@@ -2181,6 +2301,16 @@ export class RemediationRunbookStack extends cdk.Stack {
         ssmDocName: remediationName,
         remediationPolicy: inlinePolicy,
         remediationRoleName: `${remediationRoleNameBase}${remediationName}`,
+      });
+
+      RunbookFactory.createRemediationRunbook(this, 'ASR ' + remediationName, {
+        ssmDocName: remediationName,
+        ssmDocPath: ssmdocs,
+        ssmDocFileName: `${remediationName}.yaml`,
+        scriptPath: `${ssmdocs}/scripts`,
+        solutionVersion: props.solutionVersion,
+        solutionDistBucket: props.solutionDistBucket,
+        solutionId: props.solutionId,
       });
 
       const childToMod = inlinePolicy.node.findChild('Resource') as CfnPolicy;
@@ -2221,6 +2351,16 @@ export class RemediationRunbookStack extends cdk.Stack {
         remediationRoleName: `${remediationRoleNameBase}${remediationName}`,
       });
 
+      RunbookFactory.createRemediationRunbook(this, 'ASR ' + remediationName, {
+        ssmDocName: remediationName,
+        ssmDocPath: ssmdocs,
+        ssmDocFileName: `${remediationName}.yaml`,
+        scriptPath: `${ssmdocs}/scripts`,
+        solutionVersion: props.solutionVersion,
+        solutionDistBucket: props.solutionDistBucket,
+        solutionId: props.solutionId,
+      });
+
       const childToMod = inlinePolicy.node.findChild('Resource') as CfnPolicy;
       childToMod.cfnOptions.metadata = {
         cfn_nag: {
@@ -2256,6 +2396,16 @@ export class RemediationRunbookStack extends cdk.Stack {
         ssmDocName: remediationName,
         remediationPolicy: inlinePolicy,
         remediationRoleName: `${remediationRoleNameBase}${remediationName}`,
+      });
+
+      RunbookFactory.createRemediationRunbook(this, 'ASR ' + remediationName, {
+        ssmDocName: remediationName,
+        ssmDocPath: ssmdocs,
+        ssmDocFileName: `${remediationName}.yaml`,
+        scriptPath: `${ssmdocs}/scripts`,
+        solutionVersion: props.solutionVersion,
+        solutionDistBucket: props.solutionDistBucket,
+        solutionId: props.solutionId,
       });
 
       const childToMod = inlinePolicy.node.findChild('Resource') as CfnPolicy;
@@ -2295,6 +2445,16 @@ export class RemediationRunbookStack extends cdk.Stack {
         remediationRoleName: `${remediationRoleNameBase}${remediationName}`,
       });
 
+      RunbookFactory.createRemediationRunbook(this, 'ASR ' + remediationName, {
+        ssmDocName: remediationName,
+        ssmDocPath: ssmdocs,
+        ssmDocFileName: `${remediationName}.yaml`,
+        scriptPath: `${ssmdocs}/scripts`,
+        solutionVersion: props.solutionVersion,
+        solutionDistBucket: props.solutionDistBucket,
+        solutionId: props.solutionId,
+      });
+
       const childToMod = inlinePolicy.node.findChild('Resource') as CfnPolicy;
       childToMod.cfnOptions.metadata = {
         cfn_nag: {
@@ -2331,6 +2491,16 @@ export class RemediationRunbookStack extends cdk.Stack {
         ssmDocName: remediationName,
         remediationPolicy: inlinePolicy,
         remediationRoleName: `${remediationRoleNameBase}${remediationName}`,
+      });
+
+      RunbookFactory.createRemediationRunbook(this, 'ASR ' + remediationName, {
+        ssmDocName: remediationName,
+        ssmDocPath: ssmdocs,
+        ssmDocFileName: `${remediationName}.yaml`,
+        scriptPath: `${ssmdocs}/scripts`,
+        solutionVersion: props.solutionVersion,
+        solutionDistBucket: props.solutionDistBucket,
+        solutionId: props.solutionId,
       });
 
       const childToMod = inlinePolicy.node.findChild('Resource') as CfnPolicy;

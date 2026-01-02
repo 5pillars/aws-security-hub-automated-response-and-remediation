@@ -1,7 +1,7 @@
-# Document name - AWS-EnableNeptuneDbClusterDeletionProtection
+# Document name - AWS-EnableNeptuneClusterDeletionProtection
 
 ## What does this document do?
-The AWS-EnableNeptuneDbClusterDeletionProtection runbook will use the
+The AWS-EnableNeptuneClusterDeletionProtection runbook will use the
 [Neptune ModifyDBCluster](https://docs.aws.amazon.com/neptune/latest/apiref/API_ModifyDBCluster.html) API to enable
 Deletion Protection for the specified database. An Amazon Neptune DB cluster can't be deleted while deletion
 protection is enabled. To modify a cluster, the cluster must be in the available
@@ -16,5 +16,5 @@ Systems Manager Automation uses the permissions of the user that starts this run
 Deletion Protection should be enabled.
 
 ## Output Parameters
-* EnableNeptuneDbDeletionProtection.EnableNeptuneDbDeletionProtectionResponse: The output from the
+* EnableNeptuneClusterDeletionProtection.EnableNeptuneClusterDeletionProtectionResponse: The output from the
 ModifyDBCluster call.
