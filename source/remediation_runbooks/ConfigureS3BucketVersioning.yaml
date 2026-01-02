@@ -4,32 +4,29 @@
 schemaVersion: "0.3"
 description: |
   ### Document name - ASR-ConfigureS3BucketVersioning
- 
+
   ## What does this document do?
     This document configures versioning for the specified S3 bucket. It enables or suspends versioning based on the
     VersioningState parameter.
     [PutBucketVersioning](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketVersioning.html) API.
- 
+
   ## Input Parameters
   * AutomationAssumeRole: (Required) The ARN of the role that allows Automation to perform the actions on your behalf.
   * BucketName: (Required) The name of the S3 bucket.
   * VersioningState: (Optional) The versioning status to apply. Valid values: Enabled, Suspended.
- 
+
   ## Security Standards / Controls
   * AFSBP v1.0.0: S3.14
- 
 assumeRole: "{{ AutomationAssumeRole }}"
 parameters:
   AutomationAssumeRole:
     type: String
     description: (Required) The ARN of the role that allows Automation to perform the actions on your behalf.
     allowedPattern: '^arn:(?:aws|aws-us-gov|aws-cn):iam::\d{12}:role/[\w+=,.@-]+$'
-
   BucketName:
     type: String
     description: (Required) The name of the S3 bucket.
     allowedPattern: '(?=^.{3,63}$)(?!^(\d+\.)+\d+$)(^(([a-z0-9]|[a-z0-9][a-z0-9\-]*[a-z0-9])\.)*([a-z0-9]|[a-z0-9][a-z0-9\-]*[a-z0-9])$)'
-
   VersioningState:
     type: String
     description: (Optional) Applied to VersioningConfiguration.Status.
@@ -37,10 +34,8 @@ parameters:
     allowedValues:
       - "Enabled"
       - "Suspended"
-
 outputs:
   - ConfigureS3BucketVersioning.Output
-
 mainSteps:
   - name: "ConfigureS3BucketVersioning"
     action: "aws:executeScript"
