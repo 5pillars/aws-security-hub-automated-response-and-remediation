@@ -14,7 +14,7 @@ export class EnableCloudFrontAccessLogsDocument extends ControlRunbookDocument {
     super(stage, id, {
       ...props,
       securityControlId: 'CloudFront.5',
-      remediationName: 'EnableCloudFrontAccessLogsDocument',
+      remediationName: 'EnableCloudFrontAccessLogs',
       scope: RemediationScope.REGIONAL,
       resourceIdName: 'BucketName',
       resourceIdRegex: String.raw`^arn:(?:aws|aws-cn|aws-us-gov):s3:::([A-Za-z0-9.-]{3,63})$`,
