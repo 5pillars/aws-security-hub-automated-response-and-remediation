@@ -14,7 +14,7 @@ export class EnableNeptuneClusterDeletionProtectionDocument extends ControlRunbo
     super(stage, id, {
       ...props,
       securityControlId: 'Neptune.4',
-      remediationName: 'EnableNeptuneDbClusterDeletionProtection',
+      remediationName: 'EnableNeptuneClusterDeletionProtection',
       scope: RemediationScope.REGIONAL,
       resourceIdName: 'DbClusterResourceId',
       resourceIdRegex: String.raw`^cluster-[a-zA-Z0-9-]{1,1016}$`,

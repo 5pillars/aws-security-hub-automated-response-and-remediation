@@ -5,6 +5,7 @@ import { Construct } from 'constructs';
 import { ControlRunbookDocument } from '../ssmdocs/control_runbook';
 import { CfnCondition, CfnParameter, Fn } from 'aws-cdk-lib';
 
+import * as cloudwatch_1 from '../ssmdocs/SC_CloudWatch.1';
 import * as cloudfront_1 from '../ssmdocs/SC_CloudFront.1';
 import * as cloudfront_12 from '../ssmdocs/SC_CloudFront.12';
 import * as codebuild_5 from '../ssmdocs/SC_CodeBuild.5';
@@ -14,6 +15,7 @@ import * as ec2_18 from '../ssmdocs/SC_EC2.18';
 import * as ec2_19 from '../ssmdocs/SC_EC2.19';
 import * as ec2_23 from '../ssmdocs/SC_EC2.23';
 import * as ecr_1 from '../ssmdocs/SC_ECR.1';
+import * as s3_2 from '../ssmdocs/SC_S3.2';
 import * as s3_11 from '../ssmdocs/SC_S3.11';
 import * as s3_13 from '../ssmdocs/SC_S3.13';
 import * as secretsmanager_1 from '../ssmdocs/SC_SecretsManager.1';
@@ -37,6 +39,7 @@ import * as rds_11 from '../ssmdocs/SC_RDS.11';
 import * as s3_14 from '../ssmdocs/SC_S3.14';
 import * as stepfunctions_1 from '../ssmdocs/SC_StepFunctions.1';
 import * as waf_11 from '../ssmdocs/SC_WAF.11';
+import * as iam_7 from '../ssmdocs/SC_IAM.7';
 
 export interface PlaybookProps {
   standardShortName: string;
@@ -59,6 +62,7 @@ export class ControlRunbooks extends Construct {
     this.standardLongName = props.standardLongName;
     this.standardVersion = props.standardVersion;
     this.add(apigateway_3.createControlRunbook(this, 'APIGateway.3', props));
+    this.add(cloudwatch_1.createControlRunbook(this, 'CloudWatch.1', props));
     this.add(cloudfront_1.createControlRunbook(this, 'CloudFront.1', props));
     this.add(cloudfront_2.createControlRunbook(this, 'CloudFront.2', props));
     this.add(cloudfront_5.createControlRunbook(this, 'CloudFront.5', props));
@@ -76,11 +80,13 @@ export class ControlRunbooks extends Construct {
     this.add(eks_8.createControlRunbook(this, 'EKS.8', props));
     this.add(elb_4.createControlRunbook(this, 'ELB.4', props));
     this.add(elb_6.createControlRunbook(this, 'ELB.6', props));
+    this.add(iam_7.createControlRunbook(this, 'IAM.7', props));
     this.add(neptune_2.createControlRunbook(this, 'Neptune.2', props));
     this.add(neptune_4.createControlRunbook(this, 'Neptune.4', props));
     this.add(neptune_5.createControlRunbook(this, 'Neptune.5', props));
     this.add(rds_11.createControlRunbook(this, 'RDS.11', props));
     this.add(rds_17.createControlRunbook(this, 'RDS.17', props));
+    this.add(s3_2.createControlRunbook(this, 'S3.2', props));
     this.add(s3_11.createControlRunbook(this, 'S3.11', props));
     this.add(s3_13.createControlRunbook(this, 'S3.13', props));
     this.add(s3_14.createControlRunbook(this, 'S3.14', props));

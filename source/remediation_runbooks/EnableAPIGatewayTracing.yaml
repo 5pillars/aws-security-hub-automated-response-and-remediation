@@ -40,7 +40,7 @@ mainSteps:
       InputPayload:
         StageArn: "{{ StageArn }}"
       Script: |-
-        %%SCRIPT=EnableApiGatewayTracing.py%%
+        %%SCRIPT=EnableAPIGatewayTracing.py%%
     outputs:
       - Name: Output
         Selector: $.Payload.output

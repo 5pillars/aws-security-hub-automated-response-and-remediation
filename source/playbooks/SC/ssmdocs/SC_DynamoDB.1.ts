@@ -14,7 +14,7 @@ export class EnableDynamoDbAutoscalingDocument extends ControlRunbookDocument {
     super(stage, id, {
       ...props,
       securityControlId: 'DynamoDB.1',
-      remediationName: 'EnableDynamoDbAutoscalingDocument',
+      remediationName: 'EnableDynamoDbAutoscaling',
       scope: RemediationScope.REGIONAL,
       resourceIdName: 'TableName',
       resourceIdRegex: String.raw`[a-zA-Z0-9_.-]{3,255}`,
